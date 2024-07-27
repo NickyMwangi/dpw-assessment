@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Connected Services\**" />
+    <Compile Remove="NavContext\**" />
+    <Compile Remove="seed\menus\**" />
+    <Compile Remove="Services\Dashboard\**" />
+    <EmbeddedResource Remove="Connected Services\**" />
+    <EmbeddedResource Remove="NavContext\**" />
+    <EmbeddedResource Remove="seed\menus\**" />
+    <EmbeddedResource Remove="Services\Dashboard\**" />
+    <None Remove="Connected Services\**" />
+    <None Remove="NavContext\**" />
+    <None Remove="seed\menus\**" />
+    <None Remove="Services\Dashboard\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\ApplicationMenu.cs" />
+    <Compile Remove="Entities\Service\DomainSettingsModel.cs" />
+    <Compile Remove="Entities\Service\NavErrorModel.cs" />
+    <Compile Remove="Entities\Service\NavSettingsModel.cs" />
+    <Compile Remove="Entities\Service\ReportModel.cs" />
+    <Compile Remove="Entities\Service\ReportXMLParameters.cs" />
+    <Compile Remove="Entities\Service\SharepointSettingsModel.cs" />
+    <Compile Remove="Extensions\DropwDownsExtension.cs" />
+    <Compile Remove="Extensions\HostEnvironmentExtension.cs" />
+    <Compile Remove="Extensions\NavExtension.cs" />
+    <Compile Remove="Interfaces\INavService.cs" />
+    <Compile Remove="Interfaces\NavInput.cs" />
+    <Compile Remove="Services\utility\NavSingle.cs" />
+    <Compile Remove="Setting\NavSettings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="seed\roles\roles-data.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="seed\roles\roles-data.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.7.1.1" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.Data.Edm" Version="5.8.5" />
+    <PackageReference Include="Microsoft.Data.Services.Client" Version="5.8.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.OData.Client" Version="7.21.3" />
+    <PackageReference Include="Microsoft.OData.Core" Version="7.21.3" />
+    <PackageReference Include="Microsoft.OData.Edm" Version="7.21.3" />
+    <PackageReference Include="Microsoft.Spatial" Version="7.21.3" />
+    <PackageReference Include="MimeKit" Version="4.7.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.3" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
+    <PackageReference Include="System.Spatial" Version="5.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Library\Library.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Data.Entities.ApplicationUser> SignInManager
+@inject UserManager<Data.Entities.ApplicationUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="dropdown-toggle" data-toggle="dropdown">
+        <img src="~/images/photo.png" class="img-radius" alt="User-Profile-Image">
+        <span>@User.Identity.Name</span>
+        <i class="feather icon-chevron-down"></i>
+    </div>
+    <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+        <li>
+            <a href="#!">
+                <i class="feather icon-settings"></i> Settings
+            </a>
+        </li>
+        <li>
+            <a href="user-profile.html">
+                <i class="feather icon-user"></i> Profile
+            </a>
+        </li>
+        <li>
+            <a href="auth-lock-screen.html">
+                <i class="feather icon-lock"></i> Lock Screen
+            </a>
+        </li>
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark p-0" data-load="">
+                    <i class="feather icon-log-out"></i> Logout
+                </button>
+            </form>
+            @*<a href="auth-normal-sign-in.html">
+                    <i class="feather icon-log-out"></i> Logout
+                </a>*@
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+    </ul>
+}

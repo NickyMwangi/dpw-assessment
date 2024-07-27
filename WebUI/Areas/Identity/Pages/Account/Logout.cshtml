@@ -1,0 +1,38 @@
+﻿@page
+@model LogoutModel
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="auth-box card">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <img src="~/images/coreteclogo.jpg" height="80" alt="logo.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-b-20">
+                            <div class="col-md-12">
+                                <h3 class="text-center login-header">Sign Out</h3>
+                            </div>
+                        </div>
+                        <p>You have successfully logged out of the application.</p>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p class="text-inverse text-left">
+                                    <a asp-page="./Login" asp-route-returnUrl="@Url.Content("~/")" data-load="">
+                                        <b class="f-w-900">Sign In</b>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
