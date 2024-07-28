@@ -4,13 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DPW Nickson Assessment</title>
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="#">
+    <meta name="author" content="Nickson Mwangi - Software Developer">
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <link rel="stylesheet" href="~/css/bundles/app.min.css">
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebUI.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -41,11 +43,15 @@
         </main>
     </div>
 
+    <div id="modal-holder">
+    </div>
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - Nickson Assessment - Niclausel@gmail.com - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <partial name="_Config" />
     <script src="~/js/bundles/jquery.min.js"></script>
     <script src="~/js/bundles/layout.min.js"></script>
     <script src="~/js/bundles/modernizr.min.js"></script>
@@ -54,10 +60,8 @@
     <script src="~/lib/select-table/select-table.js"></script>
     <script src="~/js/bundles/i18next.min.js"></script>
     <script src="~/js/bundles/common.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSectionAsync("Scripts", required: false)
 
-    @*display alert*@
     @{
         var displayMsg = ViewData["alert"] ?? ViewData["alert"];
         if (displayMsg != null && !string.IsNullOrEmpty(displayMsg.ToString()))
@@ -67,16 +71,5 @@
             </script>
         }
     }
-
-    <script>
-        $(document).ready(function () {
-            $('li[data-menu="@activeMenu"]').addClass('active');
-            var parentMenu = $('li[data-menu="@activeMenu"]').parents('li:first');
-            //$(parentMenu).addClass('active pcoded-trigger');
-            $(parentMenu).addClass('active');
-        })
-    </script>
-
-
 </body>
 </html>

@@ -1,0 +1,78 @@
+﻿@model OrderDto
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-toolbar p-2">
+            <button type="button" class="btn btn-outline-primary btn-sm btn-pure" data-toggle="modal" data-target="#orderLine"> <i class="fa fa-plus"></i>Add New</button>
+        </div>
+        <div class="table-responsive">
+            <table id="tblcoin" class="table table-edit" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Line No.</th>
+                        <th>Product Code</th>
+                        <th>Product Type</th>
+                        <th>Cost price</th>
+                        <th>Sales price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @if (Model.DtoLines != null)
+                    {
+                        @foreach (var item in Model.DtoLines)
+                        {
+                            <tr>
+                                <td class="text-nowrap">
+                                    @Html.ValueFor(modelItem => item.LineNo)
+                                </td>
+                                <td class="text-nowrap">
+                                    @Html.ValueFor(modelItem => item.ProductCode)
+                                </td>
+                                <td class="text-nowrap">
+                                    @Html.ValueFor(modelItem => item.ProductType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductCostPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductSalesPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                <td class="text-left text-nowrap" style="width:25px">
+                                    @Html.ValueFor(modelItem => item.LineNo)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="orderLine" tabindex="-1" aria-labelledby="orderLineLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="orderLineLabel">Order Line Header</h6>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="far fa-window-close"></i></button>
+                    </div>
+                    <div class="modal-body">
+                       @*  <partial name="LinesItem" /> *@
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm btn-pure" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-sm btn-pure">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_TableFormatter" />
+}

@@ -1,0 +1,23 @@
+﻿@using Library.Utility
+@model List<ActionLinkModel>
+@{
+    string ddname = string.Format("ddb_{0}", Model.FirstOrDefault().LinkId);
+    string viewarea = ViewContext.RouteData.Values.ContainsKey("area") ? ViewContext.RouteData.Values["area"].ToString() : "";
+    string viewcontroller = ViewContext.RouteData.Values["controller"].ToString();
+}
+<div class="dropdown">
+    <button id="@ddname" class="btn btn-outline-primary btn-mini dropdown-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-ellipsis-h"></i>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        @foreach (var lnk in Model)
+        {
+            var larea = lnk.LinkArea ?? viewarea;
+            var lcontroller = lnk.LinkController ?? viewcontroller;
+            <a class="dropdown-item waves-light waves-effect @lnk.LinkClass" asp-area=@larea
+               asp-controller=@lcontroller asp-action=@lnk.LinkAction asp-all-route-data=@lnk.LinkRoute data-load="">
+                <i class="@lnk.LinkIcon"></i>@lnk.LinkName
+            </a>
+        }
+    </div>
+</div>

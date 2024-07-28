@@ -296,7 +296,7 @@ namespace TagHelpers
             var propName = EditorId ?? AspFor.Name;
             var propValue = AspFor.Model;
             var divId = string.Format("div_{0}", propName);
-            IEnumerable<SelectListItem> ddlist = SelectList ?? new List<SelectListItem>();
+            IEnumerable<SelectListItem> ddlist = SelectList ?? [];
             var dropdown = Generator.GenerateSelect(ViewContext, AspFor.ModelExplorer, OptionLabel ?? "",
                propName, ddlist, false, new
                {

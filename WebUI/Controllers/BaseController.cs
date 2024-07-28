@@ -100,12 +100,15 @@ namespace Web.Controllers
         }
 
 
-        public virtual IActionResult Index(string filterParams = null, string menu = null)
+        public virtual async Task<IActionResult> Index(string filterParams = null, string menu = null)
         {
             ViewData["controller"] = RouteData.Values["controller"].ToString().ToLower() + filterParams ?? "";
             ViewData["menu"] = menu ?? RouteData.Values["controller"].ToString().ToLower();
             ViewData["filterType"] = filterParams ?? "";
-            return View();
+            var query = repo.Query<TEntity>(false);
+            var result = await FilterQuery(query, filterParams).ToListAsync();
+            var model = mapper.MapConfig<List<TEntity>, List<TDto>>(result);
+            return View(model);
         }
 
         public virtual IActionResult AddEdit(string id = null, string queryParam = null, bool viewOnly = false)

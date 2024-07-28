@@ -6,12 +6,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form id="account" asp-action="AddEdit" data-form-submit="addEdit">
+            <form id="account" method="post">
                 <div class="page-toolbar p-2">
                     <button type="submit" class="btn btn-outline-primary btn-sm btn-pure"> <i class="fa fa-plus"></i>Save</button>
+                    <a class="btn btn-outline-danger btn-sm btn-pure" asp-action="Index"><i class="far fa-window-close"></i>Close</a>
                 </div>
                 <div class="card p-2">
-                    <div class="card-header">Order Header</div>
+                    <div class="card-header p-0">Order Header</div>
                     <div class="card-body">
                         <input type="hidden" asp-for="@Model.Id" />
                         <input type="hidden" asp-for="@Model.NewDto" />
@@ -20,18 +21,25 @@
                                 <editor asp-for="@Model.No"></editor>
                             </div>
                             <div class="col-md-3">
-                                <editor asp-for="@Model.Type"></editor>
+                                <editor asp-for="@Model.Type" select-list="Model.OrderTypeList"></editor>
                             </div>
                             <div class="col-md-3">
-                                <editor asp-for="@Model.Status"></editor>
+                                <editor asp-for="@Model.Status" select-list="Model.OrderStatusList"></editor>
                             </div>
                             <div class="col-md-3">
                                 <editor asp-for="@Model.CustomerName"></editor>
                             </div>
+                            <div class="col-md-3">
+                                <editor asp-for="@Model.OrderDate"></editor>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-header">Order Header</div>
-                    <div class="card-body"></div>
+                    <div class="card-header p-0">Order Lines</div>
+                    <div class="card-body">
+                        <div id="divtbline">
+                            <partial name="Lines"  />
+                        </div>
+                    </div>
                 </div>
 
             </form>

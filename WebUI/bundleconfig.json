@@ -1,0 +1,199 @@
+[
+  {
+    "outputFileName": "wwwroot/css/bundles/login.min.css",
+    "inputFiles": [
+      "wwwroot/lib/twitter-bootstrap/css/bootstrap.css",
+      "wwwroot/lib/sweetalert2/dist/sweetalert2.css",
+      "wwwroot/lib/icons/themify-icons/themify-icons.css",
+      "wwwroot/lib/icons/icofont/icofont.css",
+      "wwwroot/lib/icons/feather/dist/css/iconfont.css",
+      "wwwroot/css/style.css",
+      "wwwroot/css/site.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/app.min.css",
+    "inputFiles": [
+      "wwwroot/lib/jqueryui/jquery-ui.css",
+      "wwwroot/lib/twitter-bootstrap/css/bootstrap.css",
+      "wwwroot/lib/sweetalert2/dist/sweetalert2.css",
+      "wwwroot/lib/icons/themify-icons/themify-icons.css",
+      "wwwroot/lib/icons/icofont/icofont.css",
+      "wwwroot/lib/icons/feather/dist/css/iconfont.css",
+      "wwwroot/lib/icons/font-awesome/css/all.min.css",
+      "wwwroot/lib/bootstrap-table/bootstrap-table.css",
+      "wwwroot/lib/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.css",
+      "wwwroot/lib/bootstrap-table/extensions/sticky-header/bootstrap-table-sticky-header.css",
+      "wwwroot/lib/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.css",
+      "wwwroot/lib/multiselect/css/multi-select.css",
+      "wwwroot/lib/select2/css/select2.css",
+      "wwwroot/lib/dropzone/dropzone.css",
+      "wwwroot/lib/select2/theme/dist/select2-bootstrap4.css",
+      "wwwroot/lib/summernote/summernote-bs4.css",
+      "wwwroot/css/table-edit.css",
+      "wwwroot/lib/custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+      "wwwroot/css/style.css",
+      "wwwroot/css/site.css",
+      "wwwroot/css/pcoded-horizontal.min.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery.min.js",
+      "wwwroot/lib/twitter-bootstrap/js/bootstrap.bundle.min.js",
+      "wwwroot/lib/jqueryui/jquery-ui.min.js",
+      "wwwroot/lib/jquery-slimscroll/jquery.slimscroll.min.js",
+      "wwwroot/lib/jquery.form/jquery.form.min.js",
+      "wwwroot/lib/jquery.blockUI/jquery.blockUI.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/jqueryui.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jqueryui/jquery-ui.min.js"      
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/jqueryval.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery-validate/jquery.validate.min.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/modernizr.min.js",
+    "inputFiles": [
+      "wwwroot/lib/modernizr/modernizr.js",
+      "wwwroot/lib/moment.js/moment.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/table.min.js",
+    "inputFiles": [
+      "wwwroot/lib/TableExport/js/tableexport.min.js",
+      "wwwroot/lib/jspdf/jspdf.umd.min.js",
+      "wwwroot/lib/jspdf-autotable/jspdf.plugin.autotable.min.js",
+      "wwwroot/lib/xlsx/xlsx.min.js",
+      "wwwroot/lib/bootstrap-table/bootstrap-table.min.js",
+      "wwwroot/lib/bootstrap-table/extensions/export/bootstrap-table-export.min.js",
+      "wwwroot/lib/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js",
+      "wwwroot/lib/bootstrap-table/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js",
+      "wwwroot/lib/bootstrap-table/extensions/resizable/bootstrap-table-resizable.min.js",
+      "wwwroot/lib/bootstrap-table/extensions/sticky-header/bootstrap-table-sticky-header.min.js",
+      "wwwroot/lib/bootstrap-table/extensions/toolbar/bootstrap-table-toolbar.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/plugin.min.js",
+    "inputFiles": [
+      "wwwroot/lib/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.js",
+      "wwwroot/lib/jquery.quicksearch/jquery.quicksearch.js",
+      "wwwroot/lib/multiselect/js/jquery.multi-select.js",
+      "wwwroot/lib/select2/js/select2.js",
+      "wwwroot/lib/dropzone/dropzone.js",
+      "wwwroot/lib/summernote/summernote-bs4.js",
+      "wwwroot/lib/jquery.inputpicker/jquery.inputpicker.js",
+      "wwwroot/lib/jquery.inputmask/jquery.inputmask.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/i18next.min.js",
+    "inputFiles": [
+      "wwwroot/lib/i18next/i18next.js",
+      "wwwroot/lib/i18next-xhr-backend/i18nextXHRBackend.js",
+      "wwwroot/lib/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.js",
+      "wwwroot/lib/jquery-i18next/jquery-i18next.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/login.min.js",
+    "inputFiles": [
+      "wwwroot/lib/sweetalert2/dist/sweetalert2.js",
+      "wwwroot/lib/toastr.js/toastr.min.js",
+      "wwwroot/js/common-load.js",
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/common.min.js",
+    "inputFiles": [
+      "wwwroot/lib/sweetalert2/dist/sweetalert2.all.js",
+      "wwwroot/lib/toastr.js/toastr.min.js",
+      "wwwroot/js/site.js",
+      "wwwroot/js/common-pages.js",
+      "wwwroot/js/common-load.js"
+
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/controls.min.js",
+    "inputFiles": [
+      "wwwroot/js/common-pages.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/layout.min.js",
+    "inputFiles": [
+      "wwwroot/js/assets/pcoded.min.js",
+      "wwwroot/js/assets/menu-hori-fixed.js",
+      "wwwroot/lib/jquery-mousewheel/jquery.mousewheel.js",
+      "wwwroot/lib/custom-scrollbar-plugin/jquery.mCustomScrollbar.js",
+      "wwwroot/js/assets/header.min.js",
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  }
+]

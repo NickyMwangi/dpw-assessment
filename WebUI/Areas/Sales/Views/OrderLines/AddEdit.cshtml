@@ -1,5 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model OrderLineDto
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form id="account" method="post">
+                <div class="page-toolbar p-2">
+                    <button type="submit" class="btn btn-outline-primary btn-sm btn-pure"> <i class="fa fa-plus"></i>Save</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <editor asp-for="@Model.LineNo"></editor>
+                    </div>
+                    <div class="col-md-3">
+                        <editor asp-for="@Model.ProductType"></editor>
+                    </div>
+                    <div class="col-md-3">
+                        <editor asp-for="@Model.ProductCostPrice"></editor>
+                    </div>
+                    <div class="col-md-3">
+                        <editor asp-for="@Model.ProductSalesPrice"></editor>
+                    </div>
+                    <div class="col-md-3">
+                        <editor asp-for="@Model.Quantity"></editor>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

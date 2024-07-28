@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Extension\Helpers\DropDownMenuHelper.cs" />
     <Compile Remove="Extension\Helpers\EventButtonHelper.cs" />
     <Compile Remove="Extension\Identity\IdentityClaimsFactory.cs" />
   </ItemGroup>
@@ -56,8 +55,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Enums.NET" Version="5.0.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.5.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -70,10 +80,6 @@
     <ProjectReference Include="..\JobScheduler\JobScheduler.csproj" />
     <ProjectReference Include="..\Library\Library.csproj" />
     <ProjectReference Include="..\TagHelpers\TagHelpers.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extension\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -114,6 +120,7 @@
     <None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
     <None Include="Areas\Sales\Views\OrderHeader\AddEdit.cshtml" />
     <None Include="Areas\Sales\Views\OrderHeader\Index.cshtml" />
+    <None Include="Areas\Sales\Views\OrderHeader\Lines.cshtml" />
     <None Include="Areas\Sales\Views\OrderLines\AddEdit.cshtml" />
     <None Include="Areas\Sales\Views\OrderLines\Index.cshtml" />
     <None Include="Areas\Sales\Views\_ViewImports.cshtml" />

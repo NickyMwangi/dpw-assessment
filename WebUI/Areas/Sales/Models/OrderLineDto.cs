@@ -16,7 +16,6 @@ namespace WebUI.Areas.Sales.Models
         public override string HeaderId { get; set; } = string.Empty;
         public int LineNo { get; set; } = 0;
         [Required]
-        [DisplayName("Order No")]
         public string ProductCode { get; set; } = string.Empty;
 
         [Required]

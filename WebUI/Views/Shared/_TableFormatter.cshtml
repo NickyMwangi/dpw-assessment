@@ -1,0 +1,40 @@
+﻿<script>
+    function actionFormatter(value, row, index) {
+        var rowActions = "";
+        $.ajax({
+            async: false,
+            url: '@Url.Action("RowActionButton")',
+            data: { linkModels: JSON.stringify(value) },
+            success: function (data) {
+                rowActions = data;
+            }
+        });
+        return rowActions;
+    }
+
+    function dateFormatter(value, row, index) {
+        return moment(value).format('DD MMM YYYY');
+    }
+
+    function dateSorter(a, b) {
+        //if (new Date(a.toDate()) < new Date(b.toDate())) return 1;
+        //if (new Date(a.toDate()) > new Date(b.toDate())) return -1;
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    }
+
+
+    window.actionEvents = {
+        'click .show-modal': function(e) {
+            e.preventDefault();
+            var url = $(e.currentTarget).attr('href');
+            var modalTarget = $(e.currentTarget).data('target');
+            Common.displayModal(url, modalTarget);
+        }
+    }
+
+    $(function () {
+        Common.blockerLink();
+    });
+</script>
