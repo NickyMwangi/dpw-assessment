@@ -24,6 +24,8 @@
     <Compile Remove="Common\NavListDto.cs" />
     <Compile Remove="Common\ResponseJson.cs" />
     <Compile Remove="Dtos\OptionsListDto.cs" />
+    <Compile Remove="Dtos\OrderDto.cs" />
+    <Compile Remove="Dtos\OrderLineDto.cs" />
     <Compile Remove="Enums\ListTypes.cs" />
   </ItemGroup>
 

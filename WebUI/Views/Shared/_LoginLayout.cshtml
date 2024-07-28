@@ -2,46 +2,33 @@
 <html lang="en">
 <head>
     <title>DPW Assessment - Login</title>
-    <!--[if lt IE 10]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-          <![endif]-->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="#">
     <meta name="author" content="Nickson Mwangi - Senior Full Stack Developer">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebUI.styles.css" asp-append-version="true" />
 
     <link rel="shortcut icon" href="~/images/favicon.ico">
- @*   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">*@
+    @*   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">*@
 
     <link rel="stylesheet" href="~/css/bundles/login.min.css" asp-append-version="true" />
 </head>
-<body class="fix-menu">
-    <div class="theme-loader">
-        <div class="ball-scale">
-            <div class='contain'>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-            </div>
+<body>
+    <div class="container-fluid">
+        <div class="container mt-5">
+            @RenderBody()
         </div>
-    </div>
-    @RenderBody()
 
-    <script src="~/js/bundles/jquery.min.js"></script>
-    <script src="~/js/bundles/modernizr.min.js"></script>
-    <script src="~/js/bundles/i18next.min.js"></script>
-    <script src="~/js/bundles/login.min.js"></script>
-    @RenderSection("Scripts", required: false)
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 
     @{
         var displayMsg = ViewData["alert"] ?? ViewData["alert"];

@@ -12,8 +12,8 @@ namespace Data.Services
 {
     public class RepoService : IRepoService
     {
-        protected readonly IdContext _dbContext;
-        public RepoService(IdContext dbContext)
+        protected readonly Db _dbContext;
+        public RepoService(Db dbContext)
         {
             _dbContext = dbContext;
         }

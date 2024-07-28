@@ -12,7 +12,7 @@ namespace Data.Interfaces
     public interface IIdentityService
     {
         Task<bool> IsRoleExistsAsync(string roleName);
-        Task<IdentityRole> GetRoleAsync(string roleName);
+        Task<ApplicationRole> GetRoleAsync(string roleName);
         Task<IdentityResult> CreateRoleAsync(string roleName);
         Task<IdentityResult> UpdateRoleAsync(string roleName);
         Task<IList<Claim>> GetRoleClaimsAsync(string roleId);

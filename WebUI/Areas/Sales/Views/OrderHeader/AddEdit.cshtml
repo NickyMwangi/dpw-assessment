@@ -1,5 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model OrderDto
+
 @{
+    ViewData["Title"] = "Order Header";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form id="account" asp-action="AddEdit" data-form-submit="addEdit">
+                <div class="page-toolbar p-2">
+                    <button type="submit" class="btn btn-outline-primary btn-sm btn-pure"> <i class="fa fa-plus"></i>Save</button>
+                </div>
+                <div class="card p-2">
+                    <div class="card-header">Order Header</div>
+                    <div class="card-body">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <input type="hidden" asp-for="@Model.NewDto" />
+                        <div class="row">
+                            <div class="col-md-3">
+                                <editor asp-for="@Model.No"></editor>
+                            </div>
+                            <div class="col-md-3">
+                                <editor asp-for="@Model.Type"></editor>
+                            </div>
+                            <div class="col-md-3">
+                                <editor asp-for="@Model.Status"></editor>
+                            </div>
+                            <div class="col-md-3">
+                                <editor asp-for="@Model.CustomerName"></editor>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header">Order Header</div>
+                    <div class="card-body"></div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

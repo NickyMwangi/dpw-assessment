@@ -54,23 +54,27 @@ namespace WebUI.Areas.Identity.Pages.Account
         {
             [Required]
             [Display(Name = "User Type")]
-            public string UserType { get; set; }
+            public string UserType { get; set; } = string.Empty;
+
+            [Required]
+            [Display(Name = "Full name")]
+            public string FullName { get; set; } = string.Empty;
 
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
-            public string Email { get; set; }
+            public string Email { get; set; } = string.Empty;
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
-            public string Password { get; set; }
+            public string Password { get; set; } = string.Empty;
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-            public string ConfirmPassword { get; set; }
+            public string ConfirmPassword { get; set; } = string.Empty;
 
 
         }
@@ -78,11 +82,12 @@ namespace WebUI.Areas.Identity.Pages.Account
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
-            UserTypeList = new List<SelectListItem>()
-                    {
-                        new SelectListItem{Text="Client", Value="Client"},
-                        new SelectListItem{Text="Employee", Value="Employee"}
-                    };
+            //For Testing purpose only
+            UserTypeList =
+                    [
+                        new SelectListItem{Text="Admin", Value="Admin"},
+                        new SelectListItem{Text="Guest", Value="Guest"}
+                    ];
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
@@ -95,6 +100,7 @@ namespace WebUI.Areas.Identity.Pages.Account
                 
                 var user = new ApplicationUser
                 {
+                    FullNames=Input.FullName,
                     UserName = Input.Email,
                     Email = Input.Email,
                     
@@ -103,9 +109,9 @@ namespace WebUI.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    if (Input.UserType == "Client")
-                        await _idService.AddUserRoleAsync(user.Id, "Client");
-                    else await _idService.AddUserRoleAsync(user.Id, "Resource");
+                    if (Input.UserType == "Admin")
+                        await _idService.AddUserRoleAsync(user.Id, "Admin");
+                    else await _idService.AddUserRoleAsync(user.Id, "Guest");
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -121,12 +127,11 @@ namespace WebUI.Areas.Identity.Pages.Account
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         ViewData["alert"] = AlertEnum.info.Swal_Message("Please check your email to confirm your account.", "Email Sent");
-                        // return LocalRedirect(returnUrl);
                         return RedirectToPage("Login");
                     }
                     else
                     {
-                        //await _signInManager.SignInAsync(user, isPersistent: false);
+   
                         ViewData["alert"] = AlertEnum.success.Swal_Message("Registration Successfull");
                         return LocalRedirect(returnUrl);
                     }

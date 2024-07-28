@@ -24,36 +24,9 @@ builder.Services.AddDbContext<Db>(options =>
         opts => opts.CommandTimeout((int)TimeSpan.FromMinutes(15).TotalSeconds)));
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
-          .AddRoleManager<RoleManager<ApplicationRole>>()
-           .AddDefaultTokenProviders()
-           .AddEntityFrameworkStores<IdContext>();
-           //.AddClaimsPrincipalFactory<IdentityClaimsFactory>();
-
-
-//builder.Services.AddSingleton(GetConfiguredMappingConfig());
-builder.Services.AddScoped<IMapperService, MapperService>();
-//builder.Services.AddScoped<IIdentityService, IdentityService>();
-builder.Services.AddScoped<IRepoService, RepoService>();
-builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddTransient<INotificationService, NotificationService>();
-builder.Services.AddHttpContextAccessor();
-
-builder.Services.Configure<DataProtectionTokenProviderOptions>(o =>
-                o.TokenLifespan = TimeSpan.FromMinutes(10));
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.Cookie.Name = "NicksonAssessment";
-    options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-    options.LoginPath = "/Identity/Account/Login";
-    options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
-    options.SlidingExpiration = true;
-});
+    .AddRoleManager<RoleManager<ApplicationRole>>()
+    .AddEntityFrameworkStores<IdContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -66,6 +39,31 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireLowercase = true;
 });
 
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.Cookie.Name = "NicksonAssessment";
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    options.LoginPath = "/Identity/Account/Login";
+    options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+    options.SlidingExpiration = true;
+});
+
+
+builder.Services.AddScoped<IMapperService, MapperService>();
+builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddScoped<IRepoService, RepoService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddTransient<INotificationService, NotificationService>();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.Configure<DataProtectionTokenProviderOptions>(o =>
+                o.TokenLifespan = TimeSpan.FromMinutes(10));
+
+
+
 builder.Services.AddSingleton<IJobFactory, JobFactory>();
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 builder.Services.AddSingleton<JobRunner>();
@@ -74,6 +72,9 @@ builder.Services.AddScoped<EmailSenderJob>();
 builder.Services.AddSingleton(new JobSchedule(
     jobType: typeof(EmailSenderJob),
     cronExpression: "0 0/1 * * * ?")); //every 10 seconds
+
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -96,10 +97,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapAreaControllerRoute(
-    name: "sales_route",
-    areaName: "Sales",
-    pattern: "Sales/{controller}/{action}/{id?}");
+app.MapControllerRoute(
+    name: "ProjectArea",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
@@ -118,4 +118,4 @@ app.MapRazorPages();
 //    }
 //}
 
-    app.Run();
+app.Run();

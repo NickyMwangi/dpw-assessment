@@ -123,7 +123,7 @@ namespace Web.Controllers
             dto = DefaultValuesGet(dto, isNew, queryParam);
             dto = PopulateSelectLists(dto);
             dto.DtoLines = PopulateSelectLists(dto.DtoLines);
-            return PartialView(dto);
+            return View(dto);
         }
 
         [HttpPost]

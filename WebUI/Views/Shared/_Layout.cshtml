@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var activeMenu = ViewData["menu"];
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DPW Nickson Assessment</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/bundles/app.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebUI.styles.css" asp-append-version="true" />
 </head>
@@ -42,9 +46,37 @@
             &copy; 2024 - Nickson Assessment - Niclausel@gmail.com - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/bundles/jquery.min.js"></script>
+    <script src="~/js/bundles/layout.min.js"></script>
+    <script src="~/js/bundles/modernizr.min.js"></script>
+    <script src="~/js/bundles/table.min.js"></script>
+    <script src="~/js/bundles/plugin.min.js"></script>
+    <script src="~/lib/select-table/select-table.js"></script>
+    <script src="~/js/bundles/i18next.min.js"></script>
+    <script src="~/js/bundles/common.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    @*display alert*@
+    @{
+        var displayMsg = ViewData["alert"] ?? ViewData["alert"];
+        if (displayMsg != null && !string.IsNullOrEmpty(displayMsg.ToString()))
+        {
+            <script>
+                @Html.Raw(displayMsg)
+            </script>
+        }
+    }
+
+    <script>
+        $(document).ready(function () {
+            $('li[data-menu="@activeMenu"]').addClass('active');
+            var parentMenu = $('li[data-menu="@activeMenu"]').parents('li:first');
+            //$(parentMenu).addClass('active pcoded-trigger');
+            $(parentMenu).addClass('active');
+        })
+    </script>
+
+
 </body>
 </html>

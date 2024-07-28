@@ -16,7 +16,7 @@ namespace Data.Entities.DropdownList
     public class ListInputModel
     {
         public string DataUrl { get; set; }
-        public IEnumerable<SelectListItem> SelectedItem { get; set; }
+        public List<SelectListItem> SelectedItem { get; set; }
         public bool ReadOnly { get; set; } = false;
     }
 }

@@ -11,18 +11,7 @@ namespace Library.Dtos
     public class BaseDto<T>
          where T : BaseLineDto, new()
     {
-        public string dtoUserId;
-        public string dtoUserName;
-        public string controller;
-        public BaseDto()
-        {
-            dtoUserId = "";
-            dtoUserName = "";
-            controller = "";
-            if (StaticContextHelper.Current.User != null)
-                dtoUserName = StaticContextHelper.Current.User.Identity.Name;
 
-        }
         public string Id { get; set; } = string.Empty;
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMM yyyy hh:mm tt}")]
         public DateTime? CreatedOn { get; set; }

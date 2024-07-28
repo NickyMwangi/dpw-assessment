@@ -1,0 +1,44 @@
+﻿.table-line {
+    padding: 0px 20px 20px;
+}
+
+.table-edit th {
+    padding: 0.3rem 0.75rem;
+    border-top: 0;
+}
+
+.table-edit td {
+    padding: 0rem .125rem;
+    border: 1px solid #dee2e6 !important;
+}
+
+.table-edit .form-group {
+    margin-bottom: 0em !important;
+}
+
+.table-edit .form-control {
+    border: 0;
+    padding: 0rem .5rem;
+    height: calc(1.2em + .5rem + 0px);
+}
+
+    .table-edit .form-control.input-validation-error {
+        border: 1px solid #f50000;
+    }
+
+.table-edit .checkbox-fade label {
+    margin-top: 4px;
+    margin-bottom: 0 !important;
+}
+
+.table-edit .btn-sm {
+    padding: 6px 10px;
+    line-height: 15px;
+    margin-top: 2px;
+}
+
+    .table-edit .btn-sm i {
+        font-size: 14px;
+        margin-right: 0;
+    }
+

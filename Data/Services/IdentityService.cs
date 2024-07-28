@@ -12,16 +12,16 @@ namespace Data.Services
 {
     public class IdentityService : IIdentityService
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly RoleManager<IdentityRole> roleManager;
         private readonly IRepoService repo;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
 
-        public IdentityService(UserManager<ApplicationUser> _userManager,
-            RoleManager<IdentityRole> _roleManager, IRepoService _repo)
+        public IdentityService(IRepoService _repo,UserManager<ApplicationUser> _userManager,
+            RoleManager<ApplicationRole> _roleManager)
         {
+            repo = _repo;
             userManager = _userManager;
             roleManager = _roleManager;
-            repo = _repo;
         }
 
         public Task<bool> IsRoleExistsAsync(string roleName)
@@ -29,14 +29,14 @@ namespace Data.Services
             return roleManager.RoleExistsAsync(roleName);
         }
 
-        public Task<IdentityRole> GetRoleAsync(string roleName)
+        public Task<ApplicationRole> GetRoleAsync(string roleName)
         {
             return roleManager.FindByNameAsync(roleName);
         }
 
         public Task<IdentityResult> CreateRoleAsync(string roleName)
         {
-            return roleManager.CreateAsync(new IdentityRole(roleName));
+            return roleManager.CreateAsync(new ApplicationRole(roleName));
         }
 
         public async Task<IdentityResult> UpdateRoleAsync(string roleName)

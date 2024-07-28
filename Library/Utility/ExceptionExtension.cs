@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using System.Xml.Linq;
 
 namespace Library.Utility
@@ -66,8 +67,8 @@ namespace Library.Utility
 
         public static string AlertMessage(this Exception ex, bool writeLog = true)
         {
-            if (writeLog)
-                LogException(ex);
+            //if (writeLog)
+            //    LogException(ex);
             var displayMsg = ex.Message;
             if (ex.InnerException != null)
             {
@@ -93,29 +94,29 @@ namespace Library.Utility
 
         public static string AlertMessage(this string message, bool writeLog = false)
         {
-            if (writeLog)
-            {
-                var ex = new Exception(message);
-                LogException(ex);
-            }
+            //if (writeLog)
+            //{
+            //    var ex = new Exception(message);
+            //    LogException(ex);
+            //}
             var returnMsg = Regex.Replace(message, @"(?<=\w)\r\n(?=\w)", " ", RegexOptions.Compiled);
             returnMsg = Regex.Replace(returnMsg, "[^a-zA-Z0-9_.]+", " ", RegexOptions.Compiled);
             returnMsg ??= "Unspecified Exception Occurred";
             return returnMsg.Substring(0, Math.Min(250, returnMsg.Length));
         }
 
-        //public static string AlertMessage(this ModelStateDictionary modelState, bool writeLog = false)
-        //{
-        //    var message = string.Join(";", modelState.Values.SelectMany(v => v.Errors).Select(v => v.ErrorMessage));
-        //    if (writeLog)
-        //    {
-        //        var ex = new Exception(message);
-        //        LogException(ex);
-        //    }
-        //    var returnMsg = Regex.Replace(message, @"(?<=\w)\r\n(?=\w)", " ", RegexOptions.Compiled);
-        //    returnMsg = Regex.Replace(returnMsg, "[^a-zA-Z0-9_.-;:]+", " ", RegexOptions.Compiled);
-        //    returnMsg ??= "Unspecified Exception Occurred";
-        //    return returnMsg.Substring(0, Math.Min(250, returnMsg.Length));
-        //}
+        public static string AlertMessage(this ModelStateDictionary modelState, bool writeLog = false)
+        {
+            var message = string.Join(";", modelState.Values.SelectMany(v => v.Errors).Select(v => v.ErrorMessage));
+            if (writeLog)
+            {
+                var ex = new Exception(message);
+                LogException(ex);
+            }
+            var returnMsg = Regex.Replace(message, @"(?<=\w)\r\n(?=\w)", " ", RegexOptions.Compiled);
+            returnMsg = Regex.Replace(returnMsg, "[^a-zA-Z0-9_.-;:]+", " ", RegexOptions.Compiled);
+            returnMsg ??= "Unspecified Exception Occurred";
+            return returnMsg.Substring(0, Math.Min(250, returnMsg.Length));
+        }
     }
 }
